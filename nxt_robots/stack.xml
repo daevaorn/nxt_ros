@@ -1,0 +1,9 @@
+<stack>
+  <description brief="nxt_robots">nxt_robots</description>
+  <author>Maintained by Wim Meeussen</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nxt_robots</url>
+  <depend stack="ros" />
+
+</stack>
