@@ -1,0 +1,9 @@
+<stack>
+  <description brief="nxt_apps">nxt_apps</description>
+  <author>Maintained by Wim Meeussen</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nxt_apps</url>
+  <depend stack="ros" />
+
+</stack>
