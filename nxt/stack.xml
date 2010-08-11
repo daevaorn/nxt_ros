@@ -7,9 +7,9 @@
   <license>BSD</license>  
   <review status="experimental" notes=""/>
   <url>http://ros.org/wiki/nxt</url>
-  <depend stack="common_msgs" /> <!-- sensor_msgs -->
-  <depend stack="geometry" /> <!-- tf -->
-  <depend stack="robot_model" /> <!-- robot_state_publisher -->
-  <depend stack="ros" /> <!-- rospy, roscpp -->
+  <depend stack="common_msgs" /> <!-- sensor_msgs, geometry_msgs -->
+  <depend stack="geometry" /> <!-- tf, kdl -->
+  <depend stack="ros" /> <!-- rospy, std_msgs, roscpp -->
+  <depend stack="visualization" /> <!-- rviz -->
 
 </stack>
