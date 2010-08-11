@@ -13,6 +13,9 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_robot_gyro_car</url>
   <depend package="nxt_ros"/>
+  <depend package="nxt_controllers"/>
+  <depend package="robot_pose_ekf"/>
+
 </package>
 
 

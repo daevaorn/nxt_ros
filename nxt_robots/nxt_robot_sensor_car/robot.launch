@@ -10,4 +10,16 @@
     <rosparam command="load" file="$(find nxt_robot_sensor_car)/robot.yaml" />    
     <!--param name="host" value="00:16:53:0D:29:63"/-->
   </node>	 
+
+  <!-- base controller -->
+  <node pkg="nxt_controllers" type="base_controller.py" name="base_controller"/>
+
+  <!-- base odometry -->
+  <node pkg="nxt_controllers" type="base_odometry.py" name="base_odometry" output="screen"/>
+
+  <!-- robot pose ekf -->
+  <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+    <remap from="imu_data" to="gyro_imu" />
+  </node>
+
 </launch>

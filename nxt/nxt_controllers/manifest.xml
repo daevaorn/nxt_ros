@@ -1,0 +1,14 @@
+<package>
+  <description brief="nxt_controllers">
+
+     nxt_controllers
+
+  </description>
+  <author>Wim Meeussen</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nxt_controllers</url>
+
+</package>
+
+
