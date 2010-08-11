@@ -9,6 +9,14 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_controllers</url>
 
+  <depend package="rospy" />
+  <depend package="sensor_msgs" />
+  <depend package="tf" />
+  <depend package="tf_conversions" />
+  <depend package="nxt_msgs" />
+  <depend package="nav_msgs" />
+  <depend package="kdl" />
+
 </package>
 
 

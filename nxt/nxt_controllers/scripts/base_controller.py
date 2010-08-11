@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import roslib; roslib.load_manifest('nxt_apps')  
-import nxt.locator
+import roslib; roslib.load_manifest('nxt_controllers')  
 import rospy
 import math
 import thread
