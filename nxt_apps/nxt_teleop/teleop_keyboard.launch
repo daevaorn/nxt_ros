@@ -1,0 +1,8 @@
+<launch>
+
+
+  <node pkg="pr2_teleop" type="teleop_pr2" name="pr2_teleop" output="screen">
+    <rosparam file="$(find nxt_apps)/teleop.yaml" command="load" />
+  </node>
+
+</launch>
