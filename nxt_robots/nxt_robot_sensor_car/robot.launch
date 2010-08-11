@@ -1,5 +1,5 @@
 <launch>
-  <param name="robot_description" textfile="$(find nxt_robot_sensor_car)/robot_model.urdf"/>
+  <param name="robot_description" textfile="$(find nxt_robot_sensor_car)/robot.urdf"/>
 
   <node pkg="nxt_ros" type="joint_states_aggregator.py" name="js_agg" output="screen" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
@@ -7,7 +7,7 @@
   </node>
 
   <node pkg="nxt_ros" type="nxt_ros.py" name="nxt_ros" output="screen" respawn="true">
-    <rosparam command="load" file="$(find nxt_robot_sensor_car)/sensor_car_robot.yaml" />    
+    <rosparam command="load" file="$(find nxt_robot_sensor_car)/robot.yaml" />    
     <!--param name="host" value="00:16:53:0D:29:63"/-->
   </node>	 
 </launch>

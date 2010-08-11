@@ -16,8 +16,6 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_robot_sensor_car</url>
   <depend package="nxt_ros"/>
-  <depend package="nxt_apps"/>
-  <depend package="assisted_teleop"/>
 
 </package>
 
