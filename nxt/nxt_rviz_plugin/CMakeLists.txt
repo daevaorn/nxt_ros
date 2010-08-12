@@ -18,7 +18,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 set(SOURCE_FILES src/nxt_ultrasonic_display.cpp
+                 src/nxt_color_display.cpp 
                  src/init.cpp)
+
 
 include(CMakeDetermineSystem)
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
