@@ -37,6 +37,7 @@ NxtTeleop::NxtTeleop():
 
   nh_.param("axis_linear", linear_, linear_);
   nh_.param("axis_angular", angular_, angular_);
+  nh_.param("axis_deadman", deadman_axis_, deadman_axis_);
   nh_.param("scale_angular", a_scale_, a_scale_);
   nh_.param("scale_linear", l_scale_, l_scale_);
 
