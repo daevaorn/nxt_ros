@@ -8,14 +8,6 @@ from sensor_msgs.msg import JointState
 from geometry_msgs.msg import Twist
 from nxt_msgs.msg import Range, JointCommand
 
-
-WHEEL_RADIUS = 0.044/2.0
-WHEEL_BASIS  = 0.11/2.0
-VEL_TO_EFF = 0.5
-K_ROT = 0.075/VEL_TO_EFF
-K_TRANS = 0.055/VEL_TO_EFF
-
-
 class BaseController:
     def __init__(self):
         self.initialized = False
@@ -28,7 +20,14 @@ class BaseController:
         # get joint name
         self.l_joint = rospy.get_param('l_wheel_joint', 'l_wheel_joint')
         self.r_joint = rospy.get_param('r_wheel_joint', 'r_wheel_joint')
-        
+
+        self.wheel_radius = rospy.get_param('wheel_radius', 0.022)
+        self.wheel_basis = rospy.get_param('wheel_basis', 0.055)
+        self.vel_to_eff = rospy.get_param('vel_to_eff', 0.5)
+        self.k_rot = 0.075/self.vel_to_eff
+        self.k_trans = 0.055/self.vel_to_eff
+          
+         
         # joint interaction
         self.pub = rospy.Publisher('joint_command', JointCommand)
         rospy.Subscriber('joint_states', JointState, self.jnt_state_cb)
@@ -49,22 +48,22 @@ class BaseController:
             velocity[name] = vel
 
         # lowpass for measured velocity
-        self.vel_trans = 0.5*self.vel_trans + 0.5*(velocity[self.r_joint] + velocity[self.l_joint])*WHEEL_RADIUS/2.0
-        self.vel_rot =   0.5*self.vel_rot   + 0.5*(velocity[self.r_joint] - velocity[self.l_joint])*WHEEL_RADIUS/(2.0*WHEEL_BASIS)
+        self.vel_trans = 0.5*self.vel_trans + 0.5*(velocity[self.r_joint] + velocity[self.l_joint])*self.wheel_radius/2.0
+        self.vel_rot =   0.5*self.vel_rot   + 0.5*(velocity[self.r_joint] - velocity[self.l_joint])*self.wheel_radius/(2.0*self.wheel_basis)
 
         # velocity commands
-        vel_trans = self.vel_trans_desi + K_TRANS*(self.vel_trans_desi - self.vel_trans)
-        vel_rot = self.vel_rot_desi + K_ROT*(self.vel_rot_desi - self.vel_rot)
+        vel_trans = self.vel_trans_desi + self.k_trans*(self.vel_trans_desi - self.vel_trans)
+        vel_rot = self.vel_rot_desi + self.k_rot*(self.vel_rot_desi - self.vel_rot)
         
         # wheel commands
         l_cmd = JointCommand()
         l_cmd.name = self.l_joint
-        l_cmd.effort = VEL_TO_EFF*(vel_trans/WHEEL_RADIUS - vel_rot*WHEEL_BASIS/WHEEL_RADIUS)
+        l_cmd.effort = self.vel_to_eff*(vel_trans/self.wheel_radius - vel_rot*self.wheel_basis/self.wheel_radius)
         self.pub.publish(l_cmd)
 
         r_cmd = JointCommand()
         r_cmd.name = self.r_joint
-        r_cmd.effort = VEL_TO_EFF*(vel_trans/WHEEL_RADIUS + vel_rot*WHEEL_BASIS/WHEEL_RADIUS)
+        r_cmd.effort = self.vel_to_eff*(vel_trans/self.wheel_radius + vel_rot*self.wheel_basis/self.wheel_radius)
         self.pub.publish(r_cmd)
 
 
