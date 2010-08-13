@@ -21,7 +21,12 @@
   </node>
 
   <!-- base odometry -->
-  <node pkg="nxt_controllers" type="base_odometry.py" name="base_odometry" output="screen"/>
+  <node pkg="nxt_controllers" type="base_odometry.py" name="base_odometry" output="screen">
+    <param name="r_wheel_joint" value="r_wheel_joint"/>
+    <param name="l_wheel_joint" value="l_wheel_joint"/>
+    <param name="wheel_radius" value="0.022"/>
+    <param name="wheel_basis" value="0.055"/>
+  </node>
 
   <!-- robot pose ekf -->
   <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
