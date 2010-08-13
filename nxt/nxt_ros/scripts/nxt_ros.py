@@ -325,8 +325,8 @@ class IntensitySensor(Device):
 
 
 def main():
-    ns = 'nxt_robot' 
     rospy.init_node('nxt_ros')
+    ns = 'nxt_robot'
     host = rospy.get_param("~host", None)
     sock = nxt.locator.find_one_brick(host)
     b = sock.connect()
