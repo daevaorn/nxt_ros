@@ -16,10 +16,10 @@ class BaseController:
         self.vel_trans = 0
         self.vel_rot = 0
 
-        self.ns =rospy.get_namespace()  
+        self.ns =rospy.get_namespace() + 'base_parameters/' 
         # get joint name
-        self.l_joint = rospy.get_param(self.ns +'l_wheel_joint', 'l_wheel_joint')
-        self.r_joint = rospy.get_param(self.ns +'r_wheel_joint', 'r_wheel_joint')
+        self.l_joint = rospy.get_param(self.ns +'l_wheel_joint')
+        self.r_joint = rospy.get_param(self.ns +'r_wheel_joint')
         self.wheel_radius = rospy.get_param(self.ns +'wheel_radius', 0.022)
         self.wheel_basis = rospy.get_param(self.ns +'wheel_basis', 0.055)
         self.vel_to_eff = rospy.get_param(self.ns +'vel_to_eff', 0.5)

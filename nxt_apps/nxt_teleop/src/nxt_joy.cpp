@@ -43,8 +43,6 @@ NxtTeleop::NxtTeleop():
   ph_.param("axis_deadman", deadman_axis_, deadman_axis_);
   ph_.param("scale_angular", a_scale_, a_scale_);
   ph_.param("scale_linear", l_scale_, l_scale_);
-  ROS_INFO("%i", deadman_axis_);
-
 
   vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
   joy_sub_ = nh_.subscribe<joy::Joy>("joy", 10, &NxtTeleop::joyCallback, this);
