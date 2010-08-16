@@ -3,6 +3,7 @@
 #include <joy/Joy.h>
 #include "boost/thread/mutex.hpp"
 #include "boost/thread/thread.hpp"
+#include "ros/console.h"
 
 class NxtTeleop
 {
@@ -13,7 +14,7 @@ private:
   void joyCallback(const joy::Joy::ConstPtr& joy);
   void publish();
 
-  ros::NodeHandle nh_;
+  ros::NodeHandle ph_, nh_;
 
   int linear_, angular_, deadman_axis_;
   double l_scale_, a_scale_;
@@ -28,6 +29,7 @@ private:
 };
 
 NxtTeleop::NxtTeleop():
+  ph_("~"),
   linear_(1),
   angular_(2),
   deadman_axis_(0),
@@ -35,11 +37,13 @@ NxtTeleop::NxtTeleop():
   a_scale_(2.0)
 {
 
-  nh_.param("axis_linear", linear_, linear_);
-  nh_.param("axis_angular", angular_, angular_);
-  nh_.param("axis_deadman", deadman_axis_, deadman_axis_);
-  nh_.param("scale_angular", a_scale_, a_scale_);
-  nh_.param("scale_linear", l_scale_, l_scale_);
+
+  ph_.param("axis_linear", linear_, linear_);
+  ph_.param("axis_angular", angular_, angular_);
+  ph_.param("axis_deadman", deadman_axis_, deadman_axis_);
+  ph_.param("scale_angular", a_scale_, a_scale_);
+  ph_.param("scale_linear", l_scale_, l_scale_);
+  ROS_INFO("%i", deadman_axis_);
 
 
   vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
@@ -71,9 +75,6 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "nxt_teleop");
   NxtTeleop nxt_teleop;
-
-  ros::NodeHandle n;
-  
 
   ros::spin();
 }
