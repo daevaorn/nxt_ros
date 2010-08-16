@@ -54,7 +54,7 @@ void NxtTeleop::joyCallback(const joy::Joy::ConstPtr& joy)
   vel.angular.z = a_scale_*joy->axes[angular_];
   vel.linear.x = l_scale_*joy->axes[linear_];
   last_published_ = vel;
-  deadman_pressed_ = joy->axes[deadman_axis_];
+  deadman_pressed_ = joy->buttons[deadman_axis_];
 
 }
 

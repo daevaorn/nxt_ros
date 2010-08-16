@@ -1,8 +1,5 @@
 <launch>
 
-
-  <node pkg="nxt_teleop" type="nxt_teleop_key" name="nxt_teleop_key"  output="screen">
-    <rosparam file="$(find nxt_teleop)/teleop_joy.yaml" command="load" />
-  </node>
+  <node pkg="nxt_teleop" type="nxt_teleop_key" name="nxt_teleop_key"  output="screen"/>
 
 </launch>
