@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import roslib; roslib.load_manifest('nxt_apps')  
+import roslib; roslib.load_manifest('nxt_assisted_teleop')  
 import nxt.locator
 import rospy
 import math
