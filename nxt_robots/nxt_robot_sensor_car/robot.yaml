@@ -38,5 +38,3 @@ nxt_robot:
     color_g: 0.0
     color_b: 1.0
     desired_frequency: 1.0
-
-

@@ -11,22 +11,21 @@
     <!--param name="host" value="00:16:53:0D:29:63"/-->
   </node>	 
 
-  <!-- base controller -->
-  <node pkg="nxt_controllers" type="base_controller.py" name="base_controller" output="screen">
+
+  <group ns="base">
     <param name="r_wheel_joint" value="r_wheel_joint"/>
     <param name="l_wheel_joint" value="l_wheel_joint"/>
     <param name="wheel_radius" value="0.022"/>
     <param name="wheel_basis" value="0.055"/>
     <param name="vel_to_eff" value="0.5"/>
-  </node>
 
-  <!-- base odometry -->
-  <node pkg="nxt_controllers" type="base_odometry.py" name="base_odometry" output="screen">
-    <param name="r_wheel_joint" value="r_wheel_joint"/>
-    <param name="l_wheel_joint" value="l_wheel_joint"/>
-    <param name="wheel_radius" value="0.022"/>
-    <param name="wheel_basis" value="0.055"/>
-  </node>
+    <!-- base controller -->
+    <node pkg="nxt_controllers" type="base_controller.py" name="base_controller" output="screen"/>
+
+    <!-- base odometry -->
+    <node pkg="nxt_controllers" type="base_odometry.py" name="base_odometry" output="screen"/>
+  </group>
+
 
   <!-- robot pose ekf -->
   <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
