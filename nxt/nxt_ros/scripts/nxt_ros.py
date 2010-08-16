@@ -334,7 +334,7 @@ def main():
     config = rospy.get_param("~"+ns)
     components = []
     for c in config:
-        print c
+        rospy.loginfo("Creating %s with name %s on %s",c['type'],c['name'],c['port'])
         if c['type'] == 'motor':
             components.append(Motor(c, b))
         elif c['type'] == 'touch':
