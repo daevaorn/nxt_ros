@@ -51,7 +51,7 @@ public:
 private:
 
   
-  ros::NodeHandle nh_;
+  ros::NodeHandle nh_,ph_;
   double linear_, angular_;
   ros::Time last_publish_;
   double l_scale_, a_scale_;
@@ -67,8 +67,8 @@ NxtTeleop::NxtTeleop():
   l_scale_(1.0),
   a_scale_(1.0)
 {
-  nh_.param("scale_angular", a_scale_, a_scale_);
-  nh_.param("scale_linear", l_scale_, l_scale_);
+  ph_.param("scale_angular", a_scale_, a_scale_);
+  ph_.param("scale_linear", l_scale_, l_scale_);
 
   vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
 }

@@ -358,8 +358,8 @@ class IntensitySensor(Device):
 
 
 def main():
-    ns = 'nxt_robot' 
     rospy.init_node('nxt_ros')
+    ns = 'nxt_robot'
     host = rospy.get_param("~host", None)
     sock = nxt.locator.find_one_brick(host)
     b = sock.connect()
@@ -367,7 +367,7 @@ def main():
     config = rospy.get_param("~"+ns)
     components = []
     for c in config:
-        print c
+        rospy.loginfo("Creating %s with name %s on %s",c['type'],c['name'],c['port'])
         if c['type'] == 'motor':
             components.append(Motor(c, b))
         elif c['type'] == 'touch':

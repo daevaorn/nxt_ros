@@ -1,7 +1,7 @@
 <package>
   <description brief="nxt_controllers">
 
-     nxt_controllers
+     nxt_controllers provides basic controllers, a joint position controller, base controller, and base odometry controller. 
 
   </description>
   <author>Wim Meeussen</author>

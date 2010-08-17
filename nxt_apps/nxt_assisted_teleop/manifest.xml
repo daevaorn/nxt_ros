@@ -10,6 +10,8 @@
   <url>http://ros.org/wiki/nxt_assisted_teleop</url>
   <depend package="nxt_ros"/>
   <depend package="nxt_robot_sensor_car"/>
+  <depend package="nxt_robot_gyro_car"/>
+  <depend package="assisted_teleop"/>
 
 </package>
 

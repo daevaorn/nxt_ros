@@ -1,6 +1,7 @@
 <launch>
+
   <!-- point cloud converter -->
-  <node pkg="nxt_apps" type="range_to_pointcloud.py" name="range_to_pointcloud">
+  <node pkg="nxt_assisted_teleop" type="range_to_pointcloud.py" name="range_to_pointcloud">
     <remap from="range_topic" to="ultrasonic_sensor" />
     <remap from="cloud_topic" to="point_cloud" />
   </node>
@@ -13,21 +14,18 @@
     <param name="autorepeat_rate" value="10.0" />
   </node>
 
-
-  <!-- Axes -->
-  <param name="axis_linear" value="3" type="int"/>
-  <param name="axis_angular" value="0" type="int"/>
-  <param name="scale_linear" value="1" type="double"/>
-  <param name="scale_angular" value="1" type="double"/>
-
-  <node pkg="pr2_teleop" type="teleop_pr2" name="pr2_teleop" output="screen">
+  <!-- teleop node -->
+  <node pkg="nxt_teleop" type="nxt_teleop_joy" name="nxt_teleop" output="screen">
+    <param name="axis_linear" value="3" type="int"/>
+    <param name="axis_angular" value="0" type="int"/>
+    <param name="axis_deadman" value="4" type="int"/>
+    <param name="scale_linear" value="1" type="double"/>
+    <param name="scale_angular" value="1" type="double"/>
     <remap from="cmd_vel" to="teleop_cmd_vel"/>
-    <rosparam file="$(find nxt_robot_sensor_car)/teleop.yaml" command="load" />
   </node>
-
-
   
   <node pkg="assisted_teleop" name="assisted_teleop" type="assisted_teleop" respawn="false" output="screen">
-    <rosparam file="$(find nxt_robot_sensor_car)/assisted_teleop.yaml" command="load" />
+    <rosparam file="$(find nxt_assisted_teleop)/launch/sensor_car/assisted_teleop.yaml" command="load" />
   </node>
+
 </launch>

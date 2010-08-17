@@ -1,0 +1,7 @@
+\.cmake$
+/build/
+\.pyc$
+/msg_gen/
+nxt/nxt_python/src
+nxt/nxt_python/bin
+~$

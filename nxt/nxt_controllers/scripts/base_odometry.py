@@ -42,18 +42,19 @@ from nav_msgs.msg import Odometry
 from nxt_msgs.msg import Range, JointCommand
 from tf_conversions import posemath
 
-
-WHEEL_RADIUS = 0.044/2.0
-WHEEL_BASIS  = 0.11/2.0
 PUBLISH_TF = False
 
 class BaseOdometry:
     def __init__(self):
         self.initialized = False
-
+        
+        self.ns =rospy.get_namespace() + 'base_parameters/'
         # get joint name
-        self.l_joint = rospy.get_param('l_wheel_joint', 'l_wheel_joint')
-        self.r_joint = rospy.get_param('r_wheel_joint', 'r_wheel_joint')
+        self.l_joint = rospy.get_param(self.ns +'l_wheel_joint')
+        self.r_joint = rospy.get_param(self.ns +'r_wheel_joint')
+
+        self.wheel_radius = rospy.get_param(self.ns +'wheel_radius', 0.022)
+        self.wheel_basis = rospy.get_param(self.ns +'wheel_basis', 0.055)
 
         # joint interaction
         rospy.Subscriber('joint_states', JointState, self.jnt_state_cb)
@@ -82,8 +83,8 @@ class BaseOdometry:
         else:
             delta_r_pos = position[self.r_joint] - self.r_pos
             delta_l_pos = position[self.l_joint] - self.l_pos
-            delta_trans = (delta_r_pos + delta_l_pos)*WHEEL_RADIUS/2.0
-            delta_rot   = (delta_r_pos - delta_l_pos)*WHEEL_RADIUS/(2.0*WHEEL_BASIS)
+            delta_trans = (delta_r_pos + delta_l_pos)*self.wheel_radius/2.0
+            delta_rot   = (delta_r_pos - delta_l_pos)*self.wheel_radius/(2.0*self.wheel_basis)
             twist = Twist(Vector(delta_trans, 0, 0),  Vector(0, 0, delta_rot))
             self.r_pos = position[self.r_joint]
             self.l_pos = position[self.l_joint]
