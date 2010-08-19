@@ -1,7 +1,6 @@
 <package>
   <description brief="nxt_msgs">
-
-     nxt_msgs
+    The nxt_msgs package contains a set of messages to publish data coming from various NXT sensor.
 
   </description>
   <author>Wim Meeussen</author>
