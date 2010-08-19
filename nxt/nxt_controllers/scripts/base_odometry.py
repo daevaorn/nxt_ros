@@ -109,7 +109,7 @@ class BaseOdometry:
             self.pub.publish(odom)
 
 def main():
-    rospy.init_node('base_odometry')
+    rospy.init_node('nxt_base_odometry')
     base_odometry = BaseOdometry()
     rospy.spin()
 
