@@ -10,8 +10,12 @@
   </description>
   <author>Douglas P Lau.</author>
   <license>BSD</license>
-  <review status="unreviewed" notes=""/>
+  <review status="3rdparty" notes=""/>
   <url>http://ros.org/wiki/nxt_python</url>
+  <export>
+    <doxymaker external="http://code.google.com/p/nxt-python"/>
+  </export>
+
   <depend package="rospy" />
   <rosdep name="python-usb"/>
   <rosdep name="python-bluez"/>
