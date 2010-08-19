@@ -368,7 +368,6 @@ def main(argv, stdout, environ):
     elif field == "--debug":
       debugfull()
   try:
-     print args[1]
      handleLXF(args[0], args[1])
   except Exception, reason:
      print >> sys.stderr, "Unable to handle '%s': %s" % (args[0], reason)
