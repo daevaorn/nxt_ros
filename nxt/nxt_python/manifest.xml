@@ -1,10 +1,12 @@
 <package>
   <description brief="nxt_python">
-
-     nxt_python
-
+    This package contains a recent version of the NXT_Python
+    library. NXT_Python is a libraray for controlling a LEGO NXT robot
+    using the Python programming language. It can communicate using
+    either USB or Bluetooth. It is available under the Free Software
+    Foundation's GPL license. 
   </description>
-  <author>Tully Foote</author>
+  <author>Douglas P Lau.</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_python</url>
