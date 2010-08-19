@@ -1,11 +1,14 @@
 <package>
   <description brief="nxt_ros">
-
-     nxt_ros is the robot_state_publisher for the nxt. nxt_ros published the nxt sensor/servo data over 
-     ROS and published command back to the nxt brick for servo control and active sensors. nxt_ros will 
-     first try to connect using USB and then try connecting over bluetooth An nxt robot is defined by 
-     the nxt_ros.yaml file. 
-
+     The nxt_ros package provides the bindings between the NXT world
+     and the ROS world.  This package will create a ROS topic for each
+     NXT sensor, and publish the sensor's data on this topic. The
+     package also creates a topic for each NXT motor, which allows you
+     to command the motor from ROS. The nxt_ros bindings talk directly
+     to the NXT brick, either over USB or over Bluetooth (note that
+     the Bluetooth connection is currently too slow to be very
+     useful).  Binding an NXT robot to ROS only requires a single
+     configuration file.
   </description>
   <author>Wim Meeussen</author>
   <license>BSD</license>
