@@ -63,7 +63,7 @@ class BaseController:
 
 
 def main():
-    rospy.init_node('base_controller')
+    rospy.init_node('nxt_base_controller')
     base_controller = BaseController()
     rospy.spin()
 
