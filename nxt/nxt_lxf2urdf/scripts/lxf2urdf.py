@@ -367,7 +367,6 @@ def main(argv, stdout, environ):
       return
     elif field == "--debug":
       debugfull()
-    print "This is RUNNING"
   try:
      print args[1]
      handleLXF(args[0], args[1])
