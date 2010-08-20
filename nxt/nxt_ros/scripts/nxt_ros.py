@@ -76,7 +76,7 @@ class Device:
             self.last_run = rospy.Time.now()
             rospy.logdebug('Initializing %s'%self.name)
             return False
-        # compute frequence
+        # compute frequency
         now = rospy.Time.now()
         period = 0.9 * self.period + 0.1 * (now - self.last_run).to_sec() 
         

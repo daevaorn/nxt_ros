@@ -62,8 +62,8 @@ NxtTeleop::NxtTeleop():
   linear_(1),
   angular_(2),
   deadman_axis_(0),
-  l_scale_(50.0),
-  a_scale_(2.0)
+  l_scale_(1.0),
+  a_scale_(1.0)
 {
 
 
