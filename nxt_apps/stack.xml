@@ -9,7 +9,7 @@
   <license>BSD</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_apps</url>
-  <depend stack="common_msgs" /> <!-- nav_msgs, geometry_msgs -->
+  <depend stack="common_msgs" /> <!-- geometry_msgs -->
   <depend stack="joystick_drivers" /> <!-- joy -->
   <depend stack="navigation" /> <!-- base_local_planner, costmap_2d -->
   <depend stack="nxt" /> <!-- nxt_ros -->
