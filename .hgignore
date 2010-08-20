@@ -2,6 +2,8 @@
 /build/
 \.pyc$
 /msg_gen/
+/src/.*/msg/_.*\.py
+/msg/lisp/
 nxt/nxt_python/src
 nxt/nxt_python/bin
 ~$

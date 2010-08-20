@@ -24,7 +24,7 @@
     <remap from="cmd_vel" to="teleop_cmd_vel"/>
   </node>
   
-  <node pkg="assisted_teleop" name="assisted_teleop" type="assisted_teleop" respawn="false" output="screen">
+  <node pkg="nxt_assisted_teleop" name="assisted_teleop" type="assisted_teleop" respawn="false" output="screen">
     <rosparam file="$(find nxt_assisted_teleop)/launch/sensor_car/assisted_teleop.yaml" command="load" />
   </node>
 
