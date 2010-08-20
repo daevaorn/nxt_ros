@@ -14,6 +14,7 @@
   <url>http://ros.org/wiki/nxt_python</url>
   <export>
     <doxymaker external="http://code.google.com/p/nxt-python"/>
+    <rosdoc config="rosdoc.yaml"/>
   </export>
 
   <depend package="rospy" />
