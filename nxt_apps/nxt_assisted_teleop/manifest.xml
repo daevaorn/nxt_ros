@@ -11,7 +11,8 @@
   <depend package="nxt_ros"/>
   <depend package="nxt_robot_sensor_car"/>
   <depend package="nxt_robot_gyro_car"/>
-  <depend package="assisted_teleop"/>
+  <depend package="costmap_2d"/>
+  <depend package="base_local_planner"/>
 
 </package>
 
