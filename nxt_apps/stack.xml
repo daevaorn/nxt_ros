@@ -10,12 +10,10 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_apps</url>
   <depend stack="common_msgs" /> <!-- nav_msgs, geometry_msgs -->
-  <depend stack="geometry" /> <!-- kdl, tf, tf_conversions -->
   <depend stack="joystick_drivers" /> <!-- joy -->
   <depend stack="navigation" /> <!-- base_local_planner, costmap_2d -->
   <depend stack="nxt" /> <!-- nxt_ros -->
   <depend stack="nxt_robots" /> <!-- nxt_robot_gyro_car, nxt_robot_sensor_car -->
-  <depend stack="pr2_apps" /> <!-- pr2_teleop -->
   <depend stack="ros" />
 
 </stack>
