@@ -15,7 +15,6 @@
   <depend package="tf"/>
   <depend package="tf_conversions"/>
   <depend package="nav_msgs"/>
-  <depend package="pr2_teleop"/>
 
 </package>
 
