@@ -6,11 +6,8 @@
   <license>BSD</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_robots</url>
-  <depend stack="common_msgs" /> <!-- sensor_msgs -->
-  <depend stack="geometry" /> <!-- tf -->
   <depend stack="navigation" /> <!-- robot_pose_ekf -->
-  <depend stack="nxt" /> <!-- nxt_ros, nxt_rviz_plugin, nxt_description, nxt_controllers, nxt_msgs -->
-  <depend stack="robot_model" /> <!-- robot_state_publisher -->
-  <depend stack="ros" /> <!-- roscpp -->
+  <depend stack="nxt" /> <!-- nxt_ros, nxt_controllers -->
+  <depend stack="ros" />
 
 </stack>
