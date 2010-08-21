@@ -1,16 +1,18 @@
 <package>
   <description brief="nxt_robot_2.0_kit_test">
 
-     nxt_robot_2.0_kit_test is a simple package for getting started with nxt_ros. 
+     nxt_robot_2.0_kit_test
 
   </description>
   <author>Melonee Wise</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/nxt_robot_2.0_kit_test</url>
-  <depend package="nxt_ros"/>
-  <depend package="nxt_controllers"/>
 
+  <depend package="robot_state_publisher" />
+  <depend package="nxt_ros" />
+  <depend package="nxt_msgs" />
+  <depend package="nxt_description" />
 
 </package>
 

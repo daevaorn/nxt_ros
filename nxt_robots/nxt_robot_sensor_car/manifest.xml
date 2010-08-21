@@ -18,6 +18,9 @@
   <depend package="nxt_ros"/>
   <depend package="nxt_controllers"/>
   <depend package="robot_pose_ekf"/>
+  <depend package="nxt_description" />
+  <depend package="robot_state_publisher" />
+
 
 </package>
 
