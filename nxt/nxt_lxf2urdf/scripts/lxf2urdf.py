@@ -272,7 +272,7 @@ def parseLXFML(handle, lxffile,ldrfile):
       print motor_template % d
     elif ldr_trans[refID]['ldraw'] == '53792':
       print ultrasonic_link % d
-    elif ldr_trans[refID]['ldraw'] == '1044' or ldr_trans[refID]['ldraw'] == '64892':
+    elif ldr_trans[refID]['ldraw'] == '1044' or ldr_trans[refID]['ldraw'] == '64892' or  ldr_trans[refID]['ldraw'] == '53793':
       print generic_sensor_link % d
     else:
       print link_template % d
