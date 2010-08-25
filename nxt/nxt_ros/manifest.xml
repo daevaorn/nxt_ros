@@ -19,9 +19,6 @@
   <depend package="kdl"/>
   <depend package="sensor_msgs" /> 
   <depend package="nxt_msgs" /> 
-  <export>
-    <rosdoc config="rosdoc.yaml"/>
-  </export>
 </package>
 
 
