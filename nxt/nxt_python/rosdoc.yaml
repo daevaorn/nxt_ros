@@ -1,4 +1,5 @@
  - builder: rosmake
- - builder: sphinx
+ - builder: epydoc
    name: Python API
    output_dir: python
+   config: epydoc.config
