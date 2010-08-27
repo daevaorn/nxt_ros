@@ -16,6 +16,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
+rosbuild_download_data(http://foote-ros-pkg.googlecode.com/files/nxt_description.parts.tar.gz meshes/nxt_description.tar.gz 5b1eb23778428d33f8f6462e41d5c5e8)
+rosbuild_untar_file(meshes/nxt_description.tar.gz meshes/parts ALL)
+
 #uncomment if you have defined messages
 #rosbuild_genmsg()
 #uncomment if you have defined services
