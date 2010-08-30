@@ -11,5 +11,4 @@
   <depend stack="geometry" /> <!-- kdl, tf, tf_conversions -->
   <depend stack="ros" /> <!-- rospy, std_msgs, roscpp -->
   <depend stack="visualization" /> <!-- rviz -->
-
 </stack>
