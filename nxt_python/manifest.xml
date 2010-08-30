@@ -20,7 +20,7 @@
   <depend package="rospy" />
   <rosdep name="python-usb"/>
   <rosdep name="python-bluez"/>
-
+  <rosdep name="unzip"/>
 
 </package>
 
