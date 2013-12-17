@@ -1,14 +1,14 @@
 #include "nxt_ultrasonic_display.h"
 #include "rviz/visualization_manager.h"
 #include "rviz/properties/property.h"
-#include "rviz/properties/property_manager.h"
-#include "rviz/common.h"
+//#include "rviz/properties/property_manager.h"
+//#include "rviz/common.h"
 #include "rviz/frame_manager.h"
 #include "rviz/validate_floats.h"
 
 #include <tf/transform_listener.h>
 
-#include <ogre_tools/shape.h>
+#include <rviz/ogre_helpers/shape.h>
 
 #include <OGRE/OgreSceneNode.h>
 #include <OGRE/OgreSceneManager.h>
