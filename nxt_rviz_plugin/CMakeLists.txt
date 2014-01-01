@@ -1,34 +1,21 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(nxt_rviz_plugin)
 
-include($ENV{ROS_ROOT}/core/rosbuild/FindPkgConfig.cmake)
+find_package(catkin REQUIRED COMPONENTS rviz)
+catkin_package()
 
-set(SOURCE_FILES src/nxt_ultrasonic_display.cpp
-                 src/nxt_color_display.cpp 
-                 src/init.cpp)
-
-
-include(CMakeDetermineSystem)
-if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-  add_library(${PROJECT_NAME} MODULE ${SOURCE_FILES})
-else(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-  add_library(${PROJECT_NAME} ${SOURCE_FILES})
-endif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-
-find_package(Qt4 REQUIRED)
+find_package(Qt4 COMPONENTS QtCore QtGui REQUIRED)
 include(${QT_USE_FILE})
 include_directories(${QT_INCLUDE_DIRS})
 ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 
+include($ENV{ROS_ROOT}/core/rosbuild/FindPkgConfig.cmake)
 pkg_check_modules(OGRE OGRE)
 include_directories(${OGRE_INCLUDE_DIRS})
 link_directories(${OGRE_LIBRARY_DIRS})
 
-target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} ${OGRE_LIBRARIES})
-
 find_package(Boost REQUIRED COMPONENTS thread)
 include_directories(${Boost_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES}) 
 
 qt4_wrap_cpp(MOC_FILES
   src/nxt_ultrasonic_display.h
@@ -37,8 +24,23 @@ qt4_wrap_cpp(MOC_FILES
 
 set(SOURCE_FILES
   src/nxt_ultrasonic_display.cpp
-  src/xt_color_display.cpp
+  src/nxt_color_display.cpp
   ${MOC_FILES}
 )
 
-catkin_package()
+add_library(${PROJECT_NAME} ${SOURCE_FILES})
+
+target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES} ${catkin_LIBRARIES})
+
+install(TARGETS
+  ${PROJECT_NAME}
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(FILES
+  plugin_description.xml
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+

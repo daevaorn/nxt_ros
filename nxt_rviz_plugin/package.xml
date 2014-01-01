@@ -1,0 +1,26 @@
+<package>
+  <name>nxt_rviz_plugin</name>
+  <version>0.0.0</version>
+  <description>
+
+     nxt_rviz_plugin provides plugins for rviz for visualizing data coming from the nxt sensors. 
+
+  </description>
+  <author>Melonee Wise</author>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/nxt_rviz_plugin</url>
+
+  <maintainer email="daevaorn@gmail.com">Alexander Koshelev</maintainer>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>rviz</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>nxt_msgs</run_depend>
+  <run_depend>tf</run_depend>
+
+  <export>
+      <rviz plugin="${prefix}/plugin_description.xml"/>
+  </export>
+
+</package>

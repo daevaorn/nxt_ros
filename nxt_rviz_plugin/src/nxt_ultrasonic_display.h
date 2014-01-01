@@ -32,29 +32,16 @@
 #define NXT_ULTRASONIC_DISPLAY_H
 
 #include <rviz/message_filter_display.h>
-#include <rviz/helpers/color.h>
-#include <rviz/visualization_manager.h>
-
 #include <rviz/properties/color_property.h>
-#include <rviz/properties/ros_topic_property.h>
 #include <rviz/properties/float_property.h>
 
 #include <nxt_msgs/Range.h>
-
-#include <message_filters/subscriber.h>
-#include <tf/message_filter.h>
 
 #include <boost/shared_ptr.hpp>
 
 namespace rviz
 {
 class Shape;
-}
-
-
-namespace Ogre
-{
-class SceneNode;
 }
 
 namespace nxt_rviz_plugin
@@ -71,16 +58,12 @@ public:
   NXTUltrasonicDisplay();
   virtual ~NXTUltrasonicDisplay() {}
 
+protected Q_SLOTS:
   void updateColorAndAlpha();
 
-  static const char* getTypeStatic() { return "Range"; }
-  virtual const char* getType() const { return getTypeStatic(); }
-  virtual const QString getDescription();
-
-protected Q_SLOTS:
+private:
   void processMessage(const nxt_msgs::Range::ConstPtr& msg);
 
-private:
   boost::shared_ptr<rviz::Shape> cone_;      ///< Handles actually drawing the cone
 
   nxt_msgs::Range::ConstPtr current_message_;

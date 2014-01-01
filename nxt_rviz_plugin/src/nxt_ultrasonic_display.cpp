@@ -1,15 +1,4 @@
-#include <rviz/visualization_manager.h>
-#include <rviz/properties/property.h>
-#include <rviz/properties/status_property.h>
-#include <rviz/frame_manager.h>
-#include <rviz/validate_floats.h>
-
-#include <tf/transform_listener.h>
-
 #include <rviz/ogre_helpers/shape.h>
-
-#include <OGRE/OgreSceneNode.h>
-#include <OGRE/OgreSceneManager.h>
 
 #include "nxt_ultrasonic_display.h"
 
@@ -28,7 +17,6 @@ NXTUltrasonicDisplay::NXTUltrasonicDisplay()
   cone_.reset(new rviz::Shape(rviz::Shape::Cone, context_->getSceneManager(), scene_node_));
 
   Ogre::Vector3 scale( 0, 0, 0 );
-  //rviz::scaleRobotToOgre( scale );
   cone_->setScale( scale );
 }
 
@@ -49,7 +37,7 @@ void NXTUltrasonicDisplay::processMessage(const nxt_msgs::Range::ConstPtr& msg)
   geometry_msgs::Pose pose;
   
   pose.position.z = pose.position.y = 0;
-  pose.position.x = msg->range/2;
+  pose.position.x = msg->range / 2;
   pose.orientation.x = 0.707;
   pose.orientation.z = -0.707;
   
@@ -62,14 +50,9 @@ void NXTUltrasonicDisplay::processMessage(const nxt_msgs::Range::ConstPtr& msg)
   cone_->setOrientation(orientation); 
   
   Ogre::Vector3 scale( sin(msg->spread_angle) * msg->range, sin(msg->spread_angle) * msg->range , msg->range);
-  //rviz::scaleRobotToOgre( scale );
   cone_->setScale(scale);
 }
 
-const QString NXTUltrasonicDisplay::getDescription()
-{
-  return "Displays data from a nxt_msgs::Range message as a cone.";
-}
 } // namespace nxt_rviz_plugin
 
 #include <pluginlib/class_list_macros.h>
