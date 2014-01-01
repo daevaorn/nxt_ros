@@ -158,7 +158,7 @@ class TouchSensor(Device):
     def __init__(self, params, comm):
         Device.__init__(self, params)
         # create touch sensor
-        self.touch = nxt.sensor.TouchSensor(comm, eval(params['port']))
+        self.touch = nxt.sensor.Touch(comm, eval(params['port']))
         self.frame_id = params['frame_id']
 
         # create publisher
@@ -177,7 +177,7 @@ class UltraSonicSensor(Device):
     def __init__(self, params, comm):
         Device.__init__(self, params)
         # create ultrasonic sensor
-        self.ultrasonic = nxt.sensor.UltrasonicSensor(comm, eval(params['port']))
+        self.ultrasonic = nxt.sensor.Ultrasonic(comm, eval(params['port']))
         self.frame_id = params['frame_id']
         self.spread = params['spread_angle']
         self.min_range = params['min_range']
@@ -201,7 +201,7 @@ class GyroSensor(Device):
     def __init__(self, params, comm):
         Device.__init__(self, params)
         #create gyro sensor
-        self.gyro = nxt.sensor.GyroSensor(comm, eval(params['port']))
+        self.gyro = nxt.sensor.HTGyro(comm, eval(params['port']))
         self.frame_id = params['frame_id']
         self.orientation = 0.0
         self.offset = 0.0
@@ -259,7 +259,7 @@ class AccelerometerSensor(Device):
     def __init__(self, params, comm):
         Device.__init__(self, params)
         #create gyro sensor
-        self.accel = nxt.sensor.AccelerometerSensor(comm, eval(params['port']))
+        self.accel = nxt.sensor.HTAccelerometer(comm, eval(params['port']))
         self.frame_id = params['frame_id']
 
         # create publisher
@@ -280,7 +280,7 @@ class ColorSensor(Device):
     def __init__(self, params, comm):
         Device.__init__(self, params)
         # create color sensor
-        self.color = nxt.sensor.ColorSensor(comm, eval(params['port']))
+        self.color = nxt.sensor.Color20(comm, eval(params['port']))
         self.frame_id = params['frame_id']
 
         # create publisher
@@ -325,7 +325,7 @@ class IntensitySensor(Device):
     def __init__(self, params, comm):
         Device.__init__(self, params)
         # create intensity sensor
-        self.intensity = nxt.sensor.ColorSensor(comm, eval(params['port']))
+        self.intensity = nxt.sensor.Color20(comm, eval(params['port']))
         self.frame_id = params['frame_id']
         self.color_r = params['color_r']
         self.color_g = params['color_g']
@@ -361,8 +361,7 @@ def main():
     rospy.init_node('nxt_ros')
     ns = 'nxt_robot'
     host = rospy.get_param("~host", None)
-    sock = nxt.locator.find_one_brick(host)
-    b = sock.connect()
+    b = nxt.locator.find_one_brick(host)
 
     config = rospy.get_param("~"+ns)
     components = []
