@@ -1,8 +1,5 @@
 #include <rviz/ogre_helpers/shape.h>
 
-//#include <OGRE/OgreSceneNode.h>
-//#include <OGRE/OgreSceneManager.h>
-
 #include "nxt_color_display.h"
 #include "nxt_color_visual.h"
 

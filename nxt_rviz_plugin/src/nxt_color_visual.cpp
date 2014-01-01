@@ -15,7 +15,7 @@ NXTColorVisual::NXTColorVisual( Ogre::SceneManager* scene_manager, Ogre::SceneNo
 
   frame_node_ = parent_node->createChildSceneNode();
 
-  cylinder_.reset(new rviz::Shape(rviz::Shape::Cylinder, scene_manager_, frame_node_));
+  cylinder_.reset( new rviz::Shape( rviz::Shape::Cylinder, scene_manager_, frame_node_ ) );
 
   Ogre::Vector3 scale( 0, 0, 0 );
   cylinder_->setScale( scale );

@@ -47,6 +47,8 @@ class Shape;
 namespace nxt_rviz_plugin
 {
 
+class NXTUltrasonicVisual;
+
 /**
  * \class NXTUltrasonicDisplay
  * \brief Displays a nxt_msgs::Range message
@@ -62,11 +64,9 @@ protected Q_SLOTS:
   void updateColorAndAlpha();
 
 private:
-  void processMessage(const nxt_msgs::Range::ConstPtr& msg);
+  void processMessage( const nxt_msgs::Range::ConstPtr& msg );
 
-  boost::shared_ptr<rviz::Shape> cone_;      ///< Handles actually drawing the cone
-
-  nxt_msgs::Range::ConstPtr current_message_;
+  boost::shared_ptr<NXTUltrasonicVisual> visual_;
 
   rviz::ColorProperty* color_property_;
   rviz::FloatProperty* alpha_property_;
