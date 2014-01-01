@@ -9,13 +9,11 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace rviz
-{
-class Shape;
-}
 
 namespace nxt_rviz_plugin
 {
+
+class NXTColorVisual;
 
 /**
  * \class NXTColorDisplay
@@ -29,12 +27,13 @@ public:
   virtual ~NXTColorDisplay() {}
 
 protected Q_SLOTS:
-  void updateCylinder();
+  void updateAlpha();
+  void updateDisplayLength();
 
 private:
   void processMessage(const nxt_msgs::Color::ConstPtr& msg);
 
-  rviz::Shape* cylinder_;      ///< Handles actually drawing the cylinder
+  boost::shared_ptr<NXTColorVisual> visual_;
 
   rviz::FloatProperty* alpha_property_;
   rviz::FloatProperty* display_length_property_;

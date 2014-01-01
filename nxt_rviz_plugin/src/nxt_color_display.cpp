@@ -4,28 +4,33 @@
 //#include <OGRE/OgreSceneManager.h>
 
 #include "nxt_color_display.h"
+#include "nxt_color_visual.h"
 
 namespace nxt_rviz_plugin
 {
+
 NXTColorDisplay::NXTColorDisplay()
 {
   alpha_property_ = new rviz::FloatProperty( "Alpha", .5f,
                                              "Amount of transparency to apply to the circle. "
 					     "0 is fully transparent, 1.0 is fully opaque.",
-                                             this, SLOT( updateCylinder() ));
+                                             this, SLOT( updateAlpha() ));
 
   display_length_property_ = new rviz::FloatProperty( "Display Length", .003f,
                                                       "",
-                                                      this, SLOT( updateCylinder() ));
+                                                      this, SLOT( updateDisplayLength() ));
 
-  cylinder_ = new rviz::Shape(rviz::Shape::Cylinder, context_->getSceneManager(), scene_node_);
-
-  Ogre::Vector3 scale( 0, 0, 0 );
-  cylinder_->setScale( scale );
+  visual_.reset(new NXTColorVisual( context_->getSceneManager(), scene_node_ ));
 }
 
-void NXTColorDisplay::updateCylinder()
+void NXTColorDisplay::updateAlpha()
 {
+  visual_->setAlpha( alpha_property_->getFloat() );
+}
+
+void NXTColorDisplay::updateDisplayLength()
+{
+  visual_->setDisplayLength( display_length_property_->getFloat() );
 }
 
 void NXTColorDisplay::processMessage(const nxt_msgs::Color::ConstPtr& msg)
@@ -46,11 +51,11 @@ void NXTColorDisplay::processMessage(const nxt_msgs::Color::ConstPtr& msg)
                qPrintable( fixed_frame_ ) );
   }
 
-  cylinder_->setPosition(position);
-  cylinder_->setOrientation(orientation);
-  Ogre::Vector3 scale( 0.0155, 0.0155, display_length);
-  cylinder_->setScale(scale);
-  cylinder_->setColor(msg->r, msg->g, msg->b, alpha_property_->getFloat());
+  visual_->setMessage( msg );
+  visual_->setDisplayLength( display_length );
+  visual_->setAlpha( alpha_property_->getFloat() );
+  visual_->setFramePosition( position );
+  visual_->setFrameOrientation( orientation );
 }
 
 } // namespace nxt_rviz_plugin  

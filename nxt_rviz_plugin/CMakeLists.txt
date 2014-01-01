@@ -25,6 +25,7 @@ qt4_wrap_cpp(MOC_FILES
 set(SOURCE_FILES
   src/nxt_ultrasonic_display.cpp
   src/nxt_color_display.cpp
+  src/nxt_color_visual.cpp
   ${MOC_FILES}
 )
 
