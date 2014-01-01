@@ -31,9 +31,13 @@
 #ifndef NXT_ULTRASONIC_DISPLAY_H
 #define NXT_ULTRASONIC_DISPLAY_H
 
-#include "rviz/display.h"
-#include "rviz/helpers/color.h"
-//#include "rviz/properties/forwards.h"
+#include <rviz/message_filter_display.h>
+#include <rviz/helpers/color.h>
+#include <rviz/visualization_manager.h>
+
+#include <rviz/properties/color_property.h>
+#include <rviz/properties/ros_topic_property.h>
+#include <rviz/properties/float_property.h>
 
 #include <nxt_msgs/Range.h>
 
@@ -42,7 +46,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace ogre_tools
+namespace rviz
 {
 class Shape;
 }
@@ -60,59 +64,29 @@ namespace nxt_rviz_plugin
  * \class NXTUltrasonicDisplay
  * \brief Displays a nxt_msgs::Range message
  */
-class NXTUltrasonicDisplay : public rviz::Display
+class NXTUltrasonicDisplay : public rviz::MessageFilterDisplay<nxt_msgs::Range>
 {
+Q_OBJECT
 public:
-  NXTUltrasonicDisplay( const std::string& name, rviz::VisualizationManager* manager );
-  virtual ~NXTUltrasonicDisplay();
+  NXTUltrasonicDisplay();
+  virtual ~NXTUltrasonicDisplay() {}
 
-  void setTopic( const std::string& topic );
-  const std::string& getTopic() { return topic_; }
-
-  void setColor( const rviz::Color& color );
-  const rviz::Color& getColor() { return color_; }
-
-  void setAlpha( float alpha );
-  float getAlpha() { return alpha_; }
-
-  // Overrides from Display
-  virtual void targetFrameChanged() {}
-  virtual void fixedFrameChanged();
-  virtual void createProperties();
-  virtual void update(float wall_dt, float ros_dt);
-  virtual void reset();
+  void updateColorAndAlpha();
 
   static const char* getTypeStatic() { return "Range"; }
   virtual const char* getType() const { return getTypeStatic(); }
-  static const char* getDescription();
+  virtual const QString getDescription();
 
-protected:
-  void subscribe();
-  void unsubscribe();
-  void clear();
-  void incomingMessage(const nxt_msgs::Range::ConstPtr& msg);
+protected Q_SLOTS:
   void processMessage(const nxt_msgs::Range::ConstPtr& msg);
 
-  // overrides from Display
-  virtual void onEnable();
-  virtual void onDisable();
+private:
+  boost::shared_ptr<rviz::Shape> cone_;      ///< Handles actually drawing the cone
 
-  std::string topic_;
-  rviz::Color color_;
-  float alpha_;
-
-  uint32_t messages_received_;
-
-  Ogre::SceneNode* scene_node_;
-  ogre_tools::Shape* cone_;      ///< Handles actually drawing the cone
-
-  message_filters::Subscriber<nxt_msgs::Range> sub_;
-  tf::MessageFilter<nxt_msgs::Range> tf_filter_;
   nxt_msgs::Range::ConstPtr current_message_;
 
-  rviz::ColorPropertyWPtr color_property_;
-  rviz::ROSTopicStringPropertyWPtr topic_property_;
-  rviz::FloatPropertyWPtr alpha_property_;
+  rviz::ColorProperty* color_property_;
+  rviz::FloatProperty* alpha_property_;
 };
 
 } // namespace nxt_rviz_plugin
