@@ -14,9 +14,6 @@ pkg_check_modules(OGRE OGRE)
 include_directories(${OGRE_INCLUDE_DIRS})
 link_directories(${OGRE_LIBRARY_DIRS})
 
-find_package(Boost REQUIRED COMPONENTS thread)
-include_directories(${Boost_INCLUDE_DIRS})
-
 qt4_wrap_cpp(MOC_FILES
   src/nxt_ultrasonic_display.h
   src/nxt_color_display.h
